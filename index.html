@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cv</title>
+    <link rel="stylesheet" href="style.css" />
+  <style>
+header,footer,#content{
+    padding: 4px;
+    margin: 2px;
+    border: 5px so#2196f3;
+    background-color: #d3eafd;
+}
+ #content > div ,#side-menu > section{
+    padding: 4px;
+    margin: 2px;
+    border: 2px solid red !important;
+ }
+ #side-menu > section{
+    border: 2px solid green !important;
+
+ }
+
+ html{
+    height: 100%;
+ }
+body {
+    margin: 0;
+    min-height: 100%;
+    background: #f3f2ef;
+    display: flex;
+    flex-direction: column;
+ 
+}
+#content{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+#side-menu {
+    flex: 1;
+}
+
+  </style>
+  </head>
+  <body>
+
+    <header class="card2">
+      <h1>Patcas Florian12</h1>
+    <img src="img.jpg" alt="Patcas Florian " width="75" />
+    <h2 id="myId">Electronist @ Micro Game</h2>
+    <p
+    id="myIdP"
+    >
+      <strong>Welcome</strong> to my Site
+    </p>
+    <ul id="top-menu-bar" class="card2">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Skills</a></li>
+      <li><a href="#">Known Languages</a></li>
+      <li><a href="#">Projects</a></li>
+    </ul>
+    </header>
+    <section id="content">
+  <div id="side-menu" class="card">
+      <section>
+        <form class="card2" action="">
+          <div>
+            <label for="subscriberEmail">Enter yourEmail</label>
+            <input type="email" name="email" required id="subscriberEmail" />
+          </div>
+          <div>
+            <label for="subscriber">Nume</label>
+            <input type="text" name="nume" required id="Subscriber" />
+          </div>
+    
+          <button type="submit">Subscribe</button>
+          <p
+          id="unique-id"
+          class="css-clas"
+          title="info on mouse"
+          spellcheck="color:red;text-align: right"
+        >
+          paragraph with attributes
+        </p>
+      </form>
+      </section>
+      <section>Menu 2</section>
+  </div>
+  <div id="main" class="card1">
+    <div class="card1">
+      
+    <h2>Skills</h2>
+      <ul id="skills-list">
+        
+      </ol>
+    </div>
+    <div class="card2">
+      <h2 id="myId">Known Languages</h2>
+      <table border="1">
+        <tr>
+          <th>Language</th>
+          <th>Level</th>
+        </tr>
+        <tr>
+          <td>Romanian</td>
+          <td>Native</td>
+        </tr>
+        <tr>
+          <td>English</td>
+          <td>Proficient</td>
+        </tr>
+      </table>
+     
+    </div>
+  </div>
+    </section>
+    
+    <footer class="card">
+      
+    
+      <a href="http://www.google.ro">Google</a>
+    <a href="https://github.com/nmatei">github</a>
+    <a
+      href="https://github.com/nmatei"
+      target="_blank"
+      rel="noopener noreferrer"
+      >github</a>
+    
+  </footer>
+<script>
+  console.info("page loaded");
+  console.debug(2 * 3+1);
+  console.warn(2*(3+1));
+</script>
+<script src="index.js">
+
+</script>
+  </body>
+</html>
