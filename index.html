@@ -4,100 +4,71 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cv</title>
-    <link rel="stylesheet" href="style.css" />
-  <style>
-header,footer,#content{
-    padding: 4px;
-    margin: 2px;
-    border: 5px so#2196f3;
-    background-color: #d3eafd;
-}
- #content > div ,#side-menu > section{
-    padding: 4px;
-    margin: 2px;
-    border: 2px solid red !important;
- }
- #side-menu > section{
-    border: 2px solid green !important;
-
- }
-
- html{
-    height: 100%;
- }
-body {
-    margin: 0;
-    min-height: 100%;
-    background: #f3f2ef;
-    display: flex;
-    flex-direction: column;
- 
-}
-#content{
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-}
-#side-menu {
-    flex: 1;
-}
-
-  </style>
+    <title>Cv Patcas Florian</title>
+    <link rel="stylesheet" href="css/style.css" />
+  
   </head>
   <body>
 
-    <header class="card2">
+    <header >
+      <div id="header-wrapper">
+      <div id="my-picture">
+    <img src="Img/img.jpg" alt="Patcas Florian " width="75" alt="Florian" />
+  </div>
+      <div id="header-info">
       <h1>Patcas Florian12</h1>
-    <img src="img.jpg" alt="Patcas Florian " width="75" />
-    <h2 id="myId">Electronist @ Micro Game</h2>
-    <p
-    id="myIdP"
-    >
-      <strong>Welcome</strong> to my Site
-    </p>
-    <ul id="top-menu-bar" class="card2">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Skills</a></li>
-      <li><a href="#">Known Languages</a></li>
-      <li><a href="#">Projects</a></li>
+      <h2 id="job-title">Electronist @ Micro Game</h2>
+   
+  </div>
+</div>
+    <ul id="top-menu-bar">
+        <li><a href="#home" data-page="home">Home</a></li>
+        <li><a href="#skills" data-page="skills">Skills</a></li>
+        <li><a href="#projects" data-page="projects">Projects</a></li>
+        <li><a href="#languages" data-page="languages">Languages</a></li>
     </ul>
     </header>
     <section id="content">
-  <div id="side-menu" class="card">
+  <div id="side-menu" class="card" >
       <section>
-        <form class="card2" action="">
-          <div>
-            <label for="subscriberEmail">Enter yourEmail</label>
-            <input type="email" name="email" required id="subscriberEmail" />
+        <form class="card2" action="" id="contact-form">
+          <div class="form-row">
+            <label for="e">Enter yourEmail</label>
+            <input type="email" name="email" required id="e" />
           </div>
-          <div>
-            <label for="subscriber">Nume</label>
-            <input type="text" name="nume" required id="Subscriber" />
+          <div class="form-row">
+            <label for="contactName">Nume</label>
+            <input type="text" name="nume" required id="contactName" />
           </div>
-    
+          <div class="actions">
           <button type="submit">Subscribe</button>
-          <p
-          id="unique-id"
-          class="css-clas"
-          title="info on mouse"
-          spellcheck="color:red;text-align: right"
-        >
-          paragraph with attributes
-        </p>
+          </div>
       </form>
       </section>
+
       <section>Menu 2</section>
   </div>
+
   <div id="main" class="card1">
-    <div class="card1">
+
+    <div id="main">
+      <div id="home" class="page" style="display: none">
+        <h2>Home</h2>
+        <p>
+          Buna tuturor! Acesta este CV-ul meu
+        </p>
+      </div>
+
+
+      <div id="skills" class="page" style="display: none">
       
     <h2>Skills</h2>
       <ul id="skills-list">
         
       </ol>
     </div>
-    <div class="card2">
+
+    <div id="languages" class="page" style="display: none">
       <h2 id="myId">Known Languages</h2>
       <table border="1">
         <tr>
@@ -110,10 +81,34 @@ body {
         </tr>
         <tr>
           <td>English</td>
-          <td>Proficient</td>
+          <td>Mediu</td>
         </tr>
       </table>
-     
+    </div>
+
+    <div id="projects" class="page" style="display: none">
+      <h2>Projects</h2>
+      <ul>
+        <li>
+          <a href="https://github.com/patcasflorian1/Keyboard2VaccumCleaner" target="_blank"
+            >Industrial automation for car wash written in Arduino</a
+          >
+        </li>
+        <li>
+          <a href="https://github.com/patcasflorian1/IrrigatorControllerArduino" target="_blank">Industrial automation for irrigation written in Arduino</a>
+        </li>
+        <li>
+          <a href="https://github.com/patcasflorian1/LocalPortal" target="_blank">Sales/buying portal written in java</a>
+        </li>
+        <li>
+          <a href="https://github.com/patcasflorian1/SmartVendingPortal" target="_blank"
+            >Another sales/buying portal written in java</a
+          >
+        </li>
+        <li>
+          <a href="https://github.com/patcasflorian1/europartsvendingnew" target="_blank">Online sales store written in java</a>
+        </li>
+      </ul>
     </div>
   </div>
     </section>
@@ -130,6 +125,8 @@ body {
       >github</a>
     
   </footer>
+
+  <script src="index.js"></script>
 <script>
   console.info("page loaded");
   console.debug(2 * 3+1);
