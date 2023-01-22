@@ -1,18 +1,21 @@
 var skillsEl = document.getElementById("skills-list");
-
+var moreskillsEl = document.getElementById("moreskills-list");
 //var oldText = skillsEl.innerHTML;
 //
 //skillsEl.innerHTML += '<li class ="favorite">HTML</li> ';
 //skillsEl.innerHTML += '<li class ="favorite">CSS</li> ';
 //skillsEl.innerHTML = oldText + <li>JS</li>;
 //skillsEl.innerHTML += "<li>JS</li>";
-var skills = ["HTML", "CSS", "JS","Arduino","Java"];
+var skills = ["HTML", "CSS", "JS"];
+var moreskills = ["Electronica", "Arduino", "Java", "C#"];
+var skillsHTML = "";
+
 /*
 skillsEl.innerHTML += "<li>" + skills["0"] + "</li>";
 skillsEl.innerHTML += "<li>" + skills["1"] + "</li>";
 skillsEl.innerHTML += "<li>" + skills["2"] + "</li>";
 */
-var skillsHTML = "";
+
 /*
 var i = 0;
 skillsHTML += "<li>" + skills[i] + "</li>";
@@ -48,9 +51,11 @@ for (var i = 0; i < skills.length; i++){
 */
 
 for (const iterator of skills) {
-    skillsEl.innerHTML += "<li>" + iterator + "</li>";
+  skillsEl.innerHTML += "<li>" + iterator + "</li>";
 }
-
+for (const iterator of moreskills) {
+  moreskillsEl.innerHTML += "<li>" + iterator + "</li>";
+}
 
 let activePage = "home";
 
@@ -70,13 +75,17 @@ function hide(id) {
   if (el) {
     el.style.display = "none";
   } else {
-    console.error("element you are searching does not exist... check your selector");
+    console.error(
+      "element you are searching does not exist... check your selector"
+    );
   }
 }
 
 function hidePreviousPage() {
   hide(activePage);
-  const link = document.querySelector(`#top-menu-bar a[data-page="${activePage}"]`);
+  const link = document.querySelector(
+    `#top-menu-bar a[data-page="${activePage}"]`
+  );
   link.classList.remove("active");
 }
 
@@ -89,7 +98,7 @@ function showPage(pageId) {
 }
 
 function initMenu() {
-  document.addEventListener("click", e => {
+  document.addEventListener("click", (e) => {
     const link = e.target;
     if (link.matches("#top-menu-bar a")) {
       const id = link.getAttribute("data-page");
@@ -109,7 +118,7 @@ showPage(activePage);
 function getHTMLSkills(skills) {
   return skills
     .map(
-      skill =>
+      (skill) =>
         `<li class="${skill.endorsements > 9 ? "favorite" : ""}">
             ${skill.name} <span>&middot; ${skill.endorsements}</span>
         </li>`
@@ -123,20 +132,32 @@ function showSkills(skills) {
 }
 
 fetch("data/skills.json")
-  .then(r => r.json())
-  .then(allSkills => {
+  .then((r) => r.json())
+  .then((allSkills) => {
     allSkills.sort((s1, s2) => s2.endorsements - s1.endorsements);
 
     showSkills(allSkills);
   });
 
-const rubikColors = ["#f1efe2", "#07f104", "#FFFF00", "#ffa500", "#ff2c0a", "#0082df"];
+const rubikColors = [
+  "#f1efe2",
+  "#07f104",
+  "#FFFF00",
+  "#ffa500",
+  "#ff2c0a",
+  "#0082df",
+];
 
 function rubikFaceCls(size, i) {
   if (size % 2 === 1 && (size * size - 1) / 2 === i) {
     return "center";
   }
-  if (i === 0 || i === size - 1 || i === size * size - size || i === size * size - 1) {
+  if (
+    i === 0 ||
+    i === size - 1 ||
+    i === size * size - size ||
+    i === size * size - 1
+  ) {
     return "corner";
   }
   if (i < size - 1) {
@@ -170,7 +191,11 @@ function scrambleRubikFace(face, newSize) {
     });
   } else {
     const html = pieces.map(
-      (p, i) => `<div style="background: ${colors[i]}" class="${rubikFaceCls(newSize, i)}"></div>`
+      (p, i) =>
+        `<div style="background: ${colors[i]}" class="${rubikFaceCls(
+          newSize,
+          i
+        )}"></div>`
     );
     face.style.gridTemplateColumns = new Array(newSize).fill("auto").join(" ");
     // TODO progresive growing
@@ -188,7 +213,7 @@ function initRubik(form) {
   const face = form.querySelector(".rubik-face");
   const size = form.querySelector("[name=size]").value * 1;
   scrambleRubikFace(face, size);
-  form.addEventListener("submit", e => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
     const size = form.querySelector("[name=size]").value * 1;
     scrambleRubikFace(face, size);
