@@ -49,10 +49,10 @@ for (var i = 0; i < skills.length; i++){
     
 }
 */
-
 for (const iterator of skills) {
   skillsEl.innerHTML += "<li>" + iterator + "</li>";
 }
+
 for (const iterator of moreskills) {
   moreskillsEl.innerHTML += "<li>" + iterator + "</li>";
 }
