@@ -7,7 +7,7 @@ var moreskillsEl = document.getElementById("moreskills-list");
 //skillsEl.innerHTML = oldText + <li>JS</li>;
 //skillsEl.innerHTML += "<li>JS</li>";
 var skills = ["HTML", "CSS", "JS"];
-var moreskills = ["Electronica Industriala", "Arduino", "Java", "C#"];
+var moreskills = ["Electronica ", "Arduino", "Java", "C#"];
 var skillsHTML = "";
 
 /*
