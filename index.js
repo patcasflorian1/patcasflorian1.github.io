@@ -1,141 +1,78 @@
-var skillsEl = document.getElementById("skills-list");
-var moreskillsEl = document.getElementById("moreskills-list");
-//var oldText = skillsEl.innerHTML;
-//
-//skillsEl.innerHTML += '<li class ="favorite">HTML</li> ';
-//skillsEl.innerHTML += '<li class ="favorite">CSS</li> ';
-//skillsEl.innerHTML = oldText + <li>JS</li>;
-//skillsEl.innerHTML += "<li>JS</li>";
-var skills = ["HTML", "CSS", "JS"];
-var moreskills = ["Electronica ", "Arduino", "Java", "C#"];
-var skillsHTML = "";
+const r1 = fetch("skills.json");
+r1.then((raspuns) => {
+  const r2 = raspuns.json();
+  r2.then((skills) => {
+    displaySkills(skills);
+  });
+});
 
-/*
-skillsEl.innerHTML += "<li>" + skills["0"] + "</li>";
-skillsEl.innerHTML += "<li>" + skills["1"] + "</li>";
-skillsEl.innerHTML += "<li>" + skills["2"] + "</li>";
-*/
-
-/*
-var i = 0;
-skillsHTML += "<li>" + skills[i] + "</li>";
-i++;
-skillsHTML += "<li>" + skills[i] + "</li>";
-i++;
-skillsHTML += "<li>" + skills[i] + "</li>";
-i++;
-//console.info(skillsHTML);
-skillsEl.innerHTML = skillsHTML;
-*/
-/*
-for (var i = 0; i < skills.length; i++){
-    skillsHTML += "<li>" + skills[i] + "</li>";
-    skillsEl.innerHTML = skillsHTML;
-    
-}
-
-function getInfo(skills) {
-  var msg = skills;
-  return msg;
-}
-skillsEl.innerHTML = getInfo(skills);
-for (var i = 0; i < skills.length; i++) {
-  skillsEl.innerHTML = getInfo(skills);
-}
-
-for (var i = 0; i < skills.length; i++){
-    skillsEl.innerHTML += "<li>" + skills[i] + "</li>";
-    //skillsEl.innerHTML = skillsHTML;
-    
-}
-*/
-for (const iterator of skills) {
-  skillsEl.innerHTML += "<li>" + iterator + "</li>";
-}
-
-for (const iterator of moreskills) {
-  moreskillsEl.innerHTML += "<li>" + iterator + "</li>";
-}
-
-let activePage = "home";
-
-(function () {
-  const hash = window.location.hash.substring(1);
-
-  if (hash) {
-    page = document.querySelector("#" + hash);
-    if (page && page.classList.contains("page")) {
-      activePage = hash;
-    }
-  }
-})();
-
-function hide(id) {
-  const el = document.getElementById(id);
-  if (el) {
-    el.style.display = "none";
-  } else {
-    console.error(
-      "element you are searching does not exist... check your selector"
-    );
-  }
-}
-
-function hidePreviousPage() {
-  hide(activePage);
-  const link = document.querySelector(
-    `#top-menu-bar a[data-page="${activePage}"]`
+function displaySkills(skills) {
+  const skillsHTML = skills.map(
+    (skill) => `<li>${skill.name} - <span>${skill.endorcements}</span></li>`
   );
-  link.classList.remove("active");
+  const skillsEl = document.getElementById("skills-list");
+  skillsEl.innerHTML = skillsHTML.join("");
 }
 
-function showPage(pageId) {
-  hidePreviousPage();
-  document.getElementById(pageId).style.display = "";
-  const link = document.querySelector(`#top-menu-bar a[data-page="${pageId}"]`);
-  link.classList.add("active");
-  activePage = pageId;
+const r11 = fetch("moreskills.json");
+r11.then((raspuns) => {
+  const r2 = raspuns.json();
+  r2.then((moreskills) => {
+    displayMoreSkills(moreskills);
+  });
+});
+
+function displayMoreSkills(moreskills) {
+  const skillsHTML = moreskills.map(
+    (moreskills) =>
+      `<li>${moreskills.name} - <span>${moreskills.endorcements}</span></li>`
+  );
+  const skillsEl = document.getElementById("moreskills-list");
+  skillsEl.innerHTML = skillsHTML.join("");
+}
+
+function hideAllPages() {
+  const pages = document.querySelectorAll(".page");
+  pages.forEach((page) => {
+    hide(page.id);
+  });
+}
+
+function show(id) {
+  document.getElementById(id).style.display = "block";
+}
+function hide(id) {
+  document.getElementById(id).style.display = "none";
+}
+
+function displayPage(id) {
+  hideAllPages();
+  show(id);
 }
 
 function initMenu() {
-  document.addEventListener("click", (e) => {
-    const link = e.target;
-    if (link.matches("#top-menu-bar a")) {
-      const id = link.getAttribute("data-page");
-      showPage(id);
+  document.getElementById("top-menu-bar").addEventListener("click", (e) => {
+    if (e.target.matches("a")) {
+      // var id = e.target.getAttribute("data-page");
+      let id = e.target.dataset.page;
+      displayPage(id);
     }
   });
-
-  document.querySelector("#colorblind").addEventListener("click", () => {
-    document.body.classList.toggle("grayscale");
+}
+function initSideMenu() {
+  document.getElementById("side-menu-bar").addEventListener("click", (e) => {
+    if (e.target.matches("a")) {
+      // var id = e.target.getAttribute("data-page");
+      let id = e.target.dataset.page;
+      displayPage(id);
+    }
   });
 }
-
+//displayPage("skills");
+//displayPage("moreskills");
 initMenu();
-
-showPage(activePage);
-
-function getHTMLSkills(skills) {
-  return skills
-    .map(
-      (skill) =>
-        `<li class="${skill.endorsements > 9 ? "favorite" : ""}">
-            ${skill.name} <span>&middot; ${skill.endorsements}</span>
-        </li>`
-    )
-    .join("");
-}
-
-function showSkills(skills) {
-  const ul = document.querySelector("#skills ul");
-  ul.innerHTML = getHTMLSkills(skills);
-}
-
-fetch("data/skills.json")
-  .then((r) => r.json())
-  .then((allSkills) => {
-    allSkills.sort((s1, s2) => s2.endorsements - s1.endorsements);
-
-    showSkills(allSkills);
-  });
-
+initSideMenu();
+const f2 = () => {
+  return "arrow";
+};
+console.warn("end of file");
